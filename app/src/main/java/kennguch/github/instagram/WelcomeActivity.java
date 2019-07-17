@@ -38,8 +38,6 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     private void initializer() {
-
-
         mLogin = findViewById(R.id.btn_login_welcome);
         mRegister = findViewById(R.id.btn_register_welcome);
 
