@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".RegisterActivity">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:layout_marginBottom="40dp"
+        android:gravity="center"
+        android:text="@string/instagram_clone"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/reg_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:hint="@string/username"
+        android:textAllCaps="false"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/reg_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:hint="@string/email"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/passWord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button"
+        android:text="@string/register"
+        android:textAllCaps="false" />
+
+    <TextView
+        android:id="@+id/already_have_an_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/not_a_member"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+</LinearLayout>
