@@ -47,11 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-
     }
-
-
     private void initializer() {
         mLogin = findViewById(R.id.btn_register);
         mEmail = findViewById(R.id.reg_email);
@@ -62,10 +58,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void doRegister() {
 
-
         String email = mEmail.getText().toString();
         String password = mPassword.getText().toString();
-
 
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
