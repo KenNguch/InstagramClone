@@ -60,7 +60,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/not_a_member"
+        android:text="@string/already_a_member"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
