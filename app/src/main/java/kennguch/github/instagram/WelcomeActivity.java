@@ -7,10 +7,15 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 
 public class WelcomeActivity extends AppCompatActivity {
 
     Button mLogin, mRegister;
+    FirebaseUser  mUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,5 +46,16 @@ public class WelcomeActivity extends AppCompatActivity {
         mLogin = findViewById(R.id.btn_login_welcome);
         mRegister = findViewById(R.id.btn_register_welcome);
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (mUser != null )
+        {
+            startActivity(new Intent(WelcomeActivity.this,MainActivity.class));
+            finish();
+        }
     }
 }
