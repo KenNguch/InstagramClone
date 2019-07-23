@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                                 .commit();
 
                     }
-                    return false;
+                    return true;
                 }
 
             };
