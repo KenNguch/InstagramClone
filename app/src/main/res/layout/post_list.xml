@@ -8,8 +8,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
-        android:layout_weight="60">
+        android:layout_weight="60"
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -52,8 +52,8 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
-                android:src="@drawable/ic_more_ver"
-                android:layout_centerInParent="true"/>
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_more_ver" />
 
 
         </RelativeLayout>
@@ -61,8 +61,8 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/account"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            android:src="@drawable/account" />
 
     </LinearLayout>
 
@@ -71,9 +71,9 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:layout_marginStart="5dp"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_marginStart="5dp"
             android:layout_marginEnd="15dp"
             android:src="@drawable/ic_favorite" />
 
@@ -111,8 +111,8 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_marginStart="5dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
             android:text="@string/_2_views"
             android:textColor="@color/colorPrimaryDark"
             android:textStyle="bold" />
@@ -124,9 +124,9 @@
 
 
             <TextView
-                android:layout_marginStart="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:text="@string/username"
                 android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold"
@@ -148,9 +148,9 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:layout_marginStart="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:text="@string/views" />
 
             <TextView

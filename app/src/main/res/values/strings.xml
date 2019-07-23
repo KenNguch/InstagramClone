@@ -18,4 +18,6 @@
     <string name="comments">comments</string>
     <string name="_2_views">2 Views</string>
     <string name="not_a_member">Not A Member</string>
+    <string name="some_description">Some Description</string>
+    <string name="create_a_post">Create A Post</string>
 </resources>

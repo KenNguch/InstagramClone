@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case R.id.action_post:
                             startActivity(new Intent(MainActivity.this, PostActivity.class));
-                            finish();
+
                             break;
                         case R.id.action_favourite:
                             selectFragment = new FavouriteFragments();
