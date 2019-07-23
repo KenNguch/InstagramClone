@@ -49,8 +49,6 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-
-
     }
 
     private void doLogin() {

@@ -2,19 +2,21 @@ package kennguch.github.instagram.fragments;
 
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import kennguch.github.instagram.R;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+import kennguch.github.instagram.R;
+import kennguch.github.instagram.adapter.PostAdapter;
+
 public class HomeFragment extends Fragment {
+
+    RecyclerView mRecyclerView;
+    PostAdapter mAdapter;
 
 
     public HomeFragment() {
@@ -24,8 +26,19 @@ public class HomeFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home,container,false);
+
+
+        mRecyclerView= view.findViewById(R.id.home_recycler_view);
+        mAdapter = new PostAdapter();
+
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRecyclerView.setAdapter(mAdapter);
+
+
+
+
+        return view;
 
     }
 
