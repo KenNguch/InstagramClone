@@ -10,11 +10,8 @@ import java.util.List;
 
 public class ShareAdapter extends FragmentPagerAdapter {
 
-
     private final List<Fragment> mFragment = new ArrayList<>();
-
     private final List<String> mTitles = new ArrayList<>();
-
 
     public ShareAdapter(FragmentManager fm) {
         super(fm);
@@ -40,6 +37,4 @@ public class ShareAdapter extends FragmentPagerAdapter {
         mFragment.add(fragment);
         mTitles.add(title);
     }
-
-
 }

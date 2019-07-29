@@ -15,7 +15,6 @@
         android:layout_weight="60"
         android:src="@drawable/ic_camera" />
 
-
     <EditText
         android:id="@+id/post_description"
         android:layout_width="match_parent"
@@ -32,9 +31,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:background="@drawable/button"
-        android:text="@string/create_a_post"
+        android:background="@drawable/button_layout"
+        android:text="@string/create_post"
         android:textAllCaps="false" />
-
 
 </LinearLayout>

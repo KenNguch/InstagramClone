@@ -10,13 +10,14 @@ import androidx.fragment.app.Fragment;
 
 import kennguch.github.instagram.R;
 
+
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FavouriteFragments extends Fragment {
+public class FavoriteFragment extends Fragment {
 
 
-    public FavouriteFragments() {
+    public FavoriteFragment() {
         // Required empty public constructor
     }
 
@@ -25,7 +26,7 @@ public class FavouriteFragments extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favourite, container, false);
+        return inflater.inflate(R.layout.fragment_favorite, container, false);
     }
 
 }

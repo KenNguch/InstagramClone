@@ -10,13 +10,14 @@ import androidx.fragment.app.Fragment;
 
 import kennguch.github.instagram.R;
 
+
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ProfilerFragment extends Fragment {
+public class ProfileFragment extends Fragment {
 
 
-    public ProfilerFragment() {
+    public ProfileFragment() {
         // Required empty public constructor
     }
 
@@ -25,7 +26,7 @@ public class ProfilerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profiler, container, false);
+        return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
 }

@@ -10,49 +10,45 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+public class StartActivity extends AppCompatActivity {
 
-public class WelcomeActivity extends AppCompatActivity {
+    FirebaseUser mUser;
 
     Button mLogin, mRegister;
-    FirebaseUser mUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome);
+        setContentView(R.layout.activity_start);
 
-        initializer();
+        mLogin = findViewById(R.id.btn_login);
+        mRegister = findViewById(R.id.btn_reg);
+
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent login = new Intent(WelcomeActivity.this, LoginActivity.class);
-                startActivity(login);
+                startActivity(new Intent(StartActivity.this, LoginActivity.class));
                 finish();
             }
         });
+
         mRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent register = new Intent(WelcomeActivity.this, RegisterActivity.class);
-                startActivity(register);
+                startActivity(new Intent(StartActivity.this, RegisterActivity.class));
                 finish();
             }
         });
-
-    }
-
-    private void initializer() {
-        mLogin = findViewById(R.id.btn_login_welcome);
-        mRegister = findViewById(R.id.btn_register_welcome);
-
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+
         mUser = FirebaseAuth.getInstance().getCurrentUser();
+
         if (mUser != null) {
-            startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+            startActivity(new Intent(StartActivity.this, MainActivity.class));
             finish();
         }
     }
