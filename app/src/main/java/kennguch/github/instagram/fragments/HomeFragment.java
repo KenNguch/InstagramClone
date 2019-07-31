@@ -36,7 +36,6 @@ public class HomeFragment extends Fragment {
     private DatabaseReference postsRef;
 
     public HomeFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -76,7 +75,6 @@ public class HomeFragment extends Fragment {
                 mAdapter = new PostAdapter(getContext(), mPosts);
                 mRecyclerView.setAdapter(mAdapter);
                 mAdapter.notifyDataSetChanged();
-
             }
 
             @Override
@@ -86,6 +84,5 @@ public class HomeFragment extends Fragment {
         });
 
     }
-
 
 }

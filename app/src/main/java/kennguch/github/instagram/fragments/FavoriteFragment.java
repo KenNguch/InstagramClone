@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment;
 
 import kennguch.github.instagram.R;
 
-
 /**
  * A simple {@link Fragment} subclass.
  */

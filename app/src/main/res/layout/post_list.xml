@@ -21,8 +21,11 @@
                 android:gravity="center_vertical">
 
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/post_user_profile"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
                     android:src="@drawable/ic_profile" />
 
                 <LinearLayout
@@ -35,6 +38,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/username"
+                        android:textColor="@android:color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
@@ -58,19 +62,21 @@
 
         <ImageView
             android:id="@+id/postImage"
-            android:src="@drawable/account"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop" />
+            android:layout_marginTop="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/account" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:padding="8dp">
 
         <ImageView
+            android:id="@+id/post_like"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginEnd="15dp"
@@ -109,6 +115,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/post_likes_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/_2_views"

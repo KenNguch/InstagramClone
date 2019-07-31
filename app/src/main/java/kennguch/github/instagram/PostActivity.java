@@ -3,7 +3,6 @@ package kennguch.github.instagram;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +12,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
@@ -22,8 +20,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -42,18 +43,21 @@ public class PostActivity extends AppCompatActivity {
     EditText mDescription;
     Button mCreatePost;
     ImageView mImage;
-    private String mUrl, username;
+    private String mUrl, userId, username, userProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
 
+        mUser = FirebaseAuth.getInstance().getCurrentUser();
+        userId = mUser.getUid();
+
         mDialog = new ProgressDialog(this);
 
-        userRef = FirebaseDatabase.getInstance().getReference("users");
+        userRef = FirebaseDatabase.getInstance().getReference().child("users");
 
-        username = userRef.child("username").toString();
+        getUserInfo();
 
         init();
 
@@ -78,28 +82,43 @@ public class PostActivity extends AppCompatActivity {
         });
     }
 
+    private void getUserInfo() {
+        userRef.child(userId).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    username = dataSnapshot.child("username").getValue().toString();
+                    userProfile = dataSnapshot.child("imageUrl").getValue().toString();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(PostActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     private void doPost(String description, String url) {
         mDialog.setTitle("Creating post");
         mDialog.setMessage("Please wait");
         mDialog.show();
 
-        mUser = FirebaseAuth.getInstance().getCurrentUser();
-        assert mUser != null;
-        String userId = mUser.getUid();
-
-
         if (mUser != null) {
-            mRef = FirebaseDatabase.getInstance().getReference().child("posts").child(userId);
-            String postId = mRef.push().getKey();
+            mRef = FirebaseDatabase.getInstance().getReference("posts");
+
+            String post_id = mRef.push().getKey();
 
             HashMap<String, Object> hashMap = new HashMap<>();
-            hashMap.put("postId", postId);
+            hashMap.put("postId", post_id);
             hashMap.put("userId", userId);
             hashMap.put("description", description);
             hashMap.put("imageUrl", url);
             hashMap.put("username", username);
+            hashMap.put("userImage", userProfile);
 
-            mRef.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+            assert post_id != null;
+            mRef.child(post_id).setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
@@ -110,14 +129,15 @@ public class PostActivity extends AppCompatActivity {
                         startActivity(intent);
                     } else {
                         mDialog.dismiss();
-                        Toast.makeText(PostActivity.this, "Check you internet connection", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PostActivity.this, "Check you internet connection",
+                                Toast.LENGTH_SHORT).show();
                     }
                 }
             });
         } else {
             mDialog.dismiss();
             Toast.makeText(this, "Unable to make a post", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(PostActivity.this, LoginActivity.class));
+            startActivity(new Intent(PostActivity.this, PostActivity.class));
         }
     }
 
@@ -128,7 +148,6 @@ public class PostActivity extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(intent, "Insert Picture"), PICTURE_RESULT);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

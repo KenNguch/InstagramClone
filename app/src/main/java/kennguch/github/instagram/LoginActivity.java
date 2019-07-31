@@ -20,7 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 public class LoginActivity extends AppCompatActivity {
 
     FirebaseAuth mAuth;
-    DatabaseReference mReference;
+    DatabaseReference mRef;
 
     ProgressDialog mDialog;
 
